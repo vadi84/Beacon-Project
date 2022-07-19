@@ -3,7 +3,12 @@ import Rpi.GPIO as GPIO
 import time
 import paho.mqtt.client as mqtt
 import paho.mqtt.publish as publish
+import board
+import neopixel
+import time 
 
+
+pixels=neopixel.Neopixel(board,D18,18)
 led_on = False
 client = mqtt.Client()
 
@@ -200,5 +205,8 @@ if __name__ == "__main__":
     main()
 #GPIO Cleanup
 
-    
+'''while True:
+for x in range (0,17):
+pixels[x] = (0,0,0)
+time.sleep(2)'''
     
