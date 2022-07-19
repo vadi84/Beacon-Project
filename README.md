@@ -19,12 +19,12 @@ The Beacon Project aims to establish a line of communication between professiona
 
 -	Lock – When a user calls for a meeting, every other beacon needs to turn inactive apart from the yes/no face so that no other beacon overrides the initial beacon’s function. Until the entire vote is completed, or the function is cancelled, all beacons stay passive.
 
-##Hardware
+## **Hardware**
 
 ###The Raspberry Pi
 Raspberry Pi is a series of single board computers and enables the usage of a simple computer interface with a keyboard and mouse, and with added features of Scratch and Python. We initially began to use the Raspberry Pi 4 for the project but later moved on to use the Raspberry Pi Zero W, a smaller variant, which suited the size necessities for our project.
 
-###Setting up the Pi
+### _Setting up the Pi_
 The Raspberry Pi requires an SD Card onto which we load the operating system Raspberry Pi OS (Previously known as Raspbian). We used a San Disk 16 GB SD Card for this purpose. The Raspberry Pi OS on the other hand can be installed from the official Raspberry Pi website. 
 Once installed and initiated, the SD Card simply needs to be inserted into the appropriate slot on the Pi. 
 For the Raspberry Pi 4, one could use it in any of the two ways we used it in.
@@ -32,4 +32,16 @@ For the Raspberry Pi 4, one could use it in any of the two ways we used it in.
 - Download VNC Viewer on Windows/Mac OS and input the Raspberry Pi IP Address, connect both devices to the same Wi-Fi and use, akin to a remote monitor control.
 For the Raspberry Pi Zero W, we install a specific file onto the OS loaded SD Card with Wi-Fi details so that the RaspPi Zero can connect to the specified Wi-Fi immediately on starting.
 
-###Raspberry Pi Zero W
+### _Raspberry Pi Zero W_
+
+The RaspPi Zero W has the following features -
+•	1GHz single-core ARMv6 CPU (BCM2835)
+•	VideoCore IV GPU, 512MB RAM
+•	Mini HDMI and USB on-the-go ports
+•	Micro USB power
+•	HAT-compatible 40-pin header
+•	Composite video and reset headers
+•	CSI camera connector
+•	802.11n wireless LAN
+•	Bluetooth 4.0
+
