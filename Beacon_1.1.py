@@ -31,7 +31,6 @@ def main():
         client.connect("broker.hivemq.com", 1883,60)
         time.sleep(2)
         publisher()
-        time.sleep(2)
     except:
         traceback.print_exc()
         quit(0)
