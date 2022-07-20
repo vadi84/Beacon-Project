@@ -198,7 +198,7 @@ def publisher():
             for x in range (0,17):
                 pixels[x] = (0,0,0) #Colour
             time.sleep(2)
-            while(GPIO>input(26)!=True):
+            while(GPIO.input(26)!=True):
                 print("Formal Meeting in progress\n")
                 time.sleep(1)
             publish.single("topic/touchsensor/pesu1","meet_done",hostname="broker.hivemq.com")
@@ -213,7 +213,7 @@ def publisher():
             for x in range (0,17):
                 pixels[x] = (0,0,0) #Colour
             time.sleep(2)
-            while(GPIO>input(27)!=True):
+            while(GPIO.input(27)!=True):
                 print("Informal Meeting in progress\n")
                 time.sleep(1)
             publish.single("topic/touchsensor/pesu2","imeet_done",hostname="broker.hivemq.com")
@@ -228,7 +228,7 @@ def publisher():
             for x in range (0,17):
                 pixels[x] = (0,0,0) #Colour
             time.sleep(2)
-            while(GPIO>input(28)!=True):
+            while(GPIO.input(28)!=True):
                 print("Emergency in progress\n")
                 time.sleep(1)
             publish.single("topic/touchsensor/pesu3","em_done",hostname="broker.hivemq.com")
@@ -243,7 +243,7 @@ def publisher():
             for x in range (0,17):
                 pixels[x] = (0,0,0) #Colour
             time.sleep(2)
-            while(GPIO>input(25)!=True):
+            while(GPIO.input(25)!=True):
                 print("Recess in progress\n")
                 time.sleep(1)
             publish.single("topic/touchsensor/pesu4","rec_done",hostname="broker.hivemq.com")
@@ -258,7 +258,7 @@ def publisher():
             for x in range (0,17):
                 pixels[x] = (0,0,0) #Colour
             time.sleep(2)
-            while(GPIO>input(25)!=True):
+            while(GPIO.input(25)!=True):
                 print("F5 in progress\n")
                 time.sleep(1)
             publish.single("topic/touchsensor/pesu5","f5_done",hostname="broker.hivemq.com")
