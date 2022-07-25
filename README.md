@@ -21,7 +21,7 @@ The Beacon Project aims to establish a line of communication between professiona
 
 ## **Hardware**
 
-###The Raspberry Pi
+### The Raspberry Pi
 Raspberry Pi is a series of single board computers and enables the usage of a simple computer interface with a keyboard and mouse, and with added features of Scratch and Python. We initially began to use the Raspberry Pi 4 for the project but later moved on to use the Raspberry Pi Zero W, a smaller variant, which suited the size necessities for our project.
 
 ### _Setting up the Pi_
