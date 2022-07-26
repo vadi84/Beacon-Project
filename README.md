@@ -45,6 +45,18 @@ The RaspPi Zero W has the following features -
 •	802.11n wireless LAN
 •	Bluetooth 4.0
 
-### Elements of the project ###
+## Elements of the project ##
 
-## Establishing Inter-device communication using the MQTT protocol ##
+# _Establishing Inter-device communication using the MQTT protocol_ #
+
+MQTT is an OASIS standard messaging protocol for the Internet of Things (IoT). It is designed as an extremely lightweight publish/subscribe messaging transport that is ideal for connecting remote devices with a small code footprint and minimal network bandwidth. 
+MQTT eliminates the standard client-server relationship and establishes a client-broker scene wherein every device in this network can either _publish_ data on a particular _topic_ or read published data by _subscribing_ to said topic, with the broker acting as a middle man. This maintains efficiency, light weightedness, and scalability in communication.
+
+To install MQTT on the Raspberry Pi, we take the following steps:
+ - Before installing the MQTT broker, update the Raspberry Pi OS using either of the following two commands in the Rasp Pi OS Terminal
+
+``` sudo apt upgrade ```
+``` sudo apt update ```
+ - 
+
+
