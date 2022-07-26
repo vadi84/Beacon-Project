@@ -191,6 +191,7 @@ The touch sensors that we used for the project are the TTP223B Touch Sensors. Th
 <br>
 <br>
 <br>
+
 #### _RGB LED Strip_ ####
 
 To use the RGB LED Strip (WS2812B), we first need to import the required libraries using ``import board`` and ``import neopixel``
