@@ -180,15 +180,15 @@ def on_message(client, userdata, msg):
         print("TERMINATING RECESS")
         for y in range(0, 4):
             for x in range(0, 17):
-                pixels[x] = (0, 0, 0)  # Light Blue
+                pixels[x] = (0, 0, 0)  # Orange
             time.sleep(1)
             for x in range(0, 17):
-                pixels[x] = (155, 255, 0)  # Light Blue GRB
+                pixels[x] = (155, 255, 0)  # Orange
             time.sleep(1)
         for x in range(0, 17):
-            pixels[x] = (0, 0, 0)  # Light Blue
+            pixels[x] = (0, 0, 0)  # Black
 
-    elif msg.payload == b'f5':  # RF5
+    elif msg.payload == b'party':  # RF5
         #temp_varloop = False
         while (temp_varloop != True):
             print("On_Message")
@@ -211,17 +211,17 @@ def on_message(client, userdata, msg):
                 temp_varloop = True
             elif (GPIO.input(22) == True or GPIO.input(23) == True or GPIO.input(24) == True or GPIO.input(25) == True or GPIO.input(26)):
                 print("Only Press YES or NO")
-    elif msg.payload == b'f5_done':  # Terminating f5
+    elif msg.payload == b'party_done':  # Terminating f5
         print("TERMINATING FUNCTION 5")
         for y in range(0, 4):
             for x in range(0, 17):
-                pixels[x] = (0, 0, 0)  # Light Blue
+                pixels[x] = (0, 0, 0)  # Purple
             time.sleep(1)
             for x in range(0, 17):
-                pixels[x] = (0, 255, 255)  # Light Blue GRB
+                pixels[x] = (0, 255, 255)  # Purple
             time.sleep(1)
         for x in range(0, 17):
-            pixels[x] = (0, 0, 0)  # Light Blue
+            pixels[x] = (0, 0, 0)  # Black
 
 
 def setupGPIO():
@@ -231,7 +231,7 @@ def setupGPIO():
     GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # Formal Meeting
     GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # Informal Meeting
     GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # Emergency
-    GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # Fifth Function
+    GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # Party
     GPIO.setup(5, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # YES
     GPIO.setup(6, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # NO
 
@@ -303,13 +303,13 @@ def publisher():
         elif (GPIO.input(26) == True):  # 5th
             print("Verify")
             client.loop_stop()
-            publish.single("topic/touchsensor/pesu5", "f5", hostname="broker.hivemq.com")
+            publish.single("topic/touchsensor/pesu5", "party", hostname="broker.hivemq.com")
             for x in range(0, 17):
                 pixels[x] = (0, 255, 255)  # PURPLE
             time.sleep(1)
             while (GPIO.input(26) != True):
                 print("F5 in progress\n")
-            publish.single("topic/touchsensor/pesu5", "f5_done", hostname="broker.hivemq.com")
+            publish.single("topic/touchsensor/pesu5", "party_done", hostname="broker.hivemq.com")
             for x in range(0, 17):
                 pixels[x] = (0, 0, 0)  # OFF
             main()
