@@ -55,7 +55,7 @@ MQTT eliminates the standard client-server relationship and establishes a client
 To install MQTT on the Raspberry Pi, we take the following steps:
  1. Before installing the MQTT broker, update the Raspberry Pi OS using either of the following two commands in the Rasp Pi OS Terminal
 
-`` sudo apt upgrade ``
+`` sudo apt upgrade `` <br>
 `` sudo apt update ``
  2.  
 
