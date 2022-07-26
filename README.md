@@ -210,7 +210,16 @@ for x in range(0,17):
     pixels[x]=(0,0,0)
 ```
 To turn the strip off, control the strip colour to black (0,0,0).
+<br>
+<br>
 
+#### _Modelling the project_ ####
 
+The shape we selected for our model was a dodecahedron (12-uniformly-sided 3D figure). <br>
+Software used: Autodesk Fusion360 <br>
+
+We split the model into 2 halves to make the 3D printing process simpler. Find the .stl files attached to this repository.
+
+## **END** ##
 
 
