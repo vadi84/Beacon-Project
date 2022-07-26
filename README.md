@@ -1,7 +1,7 @@
 # Beacon-Project-Using-MQTT
-An IOT Project that serves as a communication device for people in a workspace
+An IOT Project that serves as a communication device for people in a workspace.
 
-The Beacon Project aims to establish a line of communication between professionals in a limited workplace. This device, while compact, will tend to the most basic of communications between colleagues, such as – recess, examinations, appraisals, etc. This interaction between the user and the device will be completely analogous and as simple as possible. Each individual will have one device and each of these devices will be connected to each other via the internet. This will enable a wireless form of communication. The design of the product will be compact, abstract, and straightforward. Each face of this device will be touch sensitive towards a specific function, and each face will have a different color for function recognizability. The functions of this device are as follows
+The Beacon Project aims to establish a line of communication between professionals in a limited workplace. This device, while compact, will tend to the most basic of communications between colleagues, such as – recess, examinations, appraisals, etc. This interaction between the user and the device will be completely analogous and as simple as possible. Each individual will have one device and each of these devices will be connected to each other via the internet. This will enable a wireless form of communication. The design of the product will be compact, abstract, and straightforward. Six faces of this device will have slots for a touch sensor, each with specific function and a different color for function recognizability. The functions of this device are as follows
 
 -	Call for meeting (formal) – One face of this device will be a button dedicated to calling for a formal meeting
 
@@ -11,11 +11,13 @@ The Beacon Project aims to establish a line of communication between professiona
 
 -	Emergency face – Purely for untimely emergencies
 
--	Yes/No Face – Responses recorded with this face. Two buttons or a face divided into two. 
+- Party face 
 
-- Once a person calls for a particular function, an RGB strip at the base of the device turns into the color associated with that specific function. For example, if the formal meeting button is colored blue, once a person taps on it, all the other beacons will turn blue momentarily, until a response is received. 
+-	Yes/No Face – Responses recorded with this face. Two slots in a face, one for each of Yes and No 
 
-- Reset – A tap on the button that is used to call a function cancels the function, i.e., to cancel or end a meeting, to end recess, etc. This function can be activated only by the person that calls for a particular meeting/function.
+- Once a person calls for a particular function, an RGB strip at the base of the device turns into the color associated with that specific function. For example, if the formal meeting button is colored blue, once a person taps on it, all the other beacons will flash blue momentarily, until a response is received. 
+
+- Reset – A tap on the sensor that is used to call a function cancels the function, i.e., to cancel or end a meeting, to end recess, etc. This function can be activated only by the person that calls for a particular meeting/function.
 
 -	Lock – When a user calls for a meeting, every other beacon needs to turn inactive apart from the yes/no face so that no other beacon overrides the initial beacon’s function. Until the entire vote is completed, or the function is cancelled, all beacons stay passive.
 
@@ -34,16 +36,16 @@ For the Raspberry Pi Zero W, we install a specific file onto the OS loaded SD Ca
 
 ### _Raspberry Pi Zero W_
 
-The RaspPi Zero W has the following features -
-•	1GHz single-core ARMv6 CPU (BCM2835)
-•	VideoCore IV GPU, 512MB RAM
-•	Mini HDMI and USB on-the-go ports
-•	Micro USB power
-•	HAT-compatible 40-pin header
-•	Composite video and reset headers
-•	CSI camera connector
-•	802.11n wireless LAN
-•	Bluetooth 4.0
+The RaspPi Zero W has the following features - <br>
+•	1GHz single-core ARMv6 CPU (BCM2835) <br>
+•	VideoCore IV GPU, 512MB RAM <br>
+•	Mini HDMI and USB on-the-go ports <br>
+•	Micro USB power <br>
+•	HAT-compatible 40-pin header <br>
+•	Composite video and reset headers <br>
+•	CSI camera connector <br>
+•	802.11n wireless LAN <br>
+•	Bluetooth 4.0 <br>
 
 ## Elements of the project ##
 
@@ -136,9 +138,17 @@ It is important to note that to publish information, the client loop must be sto
 
 #### _Setting up and controlling GPIO Pins_ ####
 
+GPIO stands for General Purpose Input Output. The Raspberry Pi Zero W has two rows of 40 pins, consisting of pins for DC power, grounding, and GPIO (27 pins) and more. 
+
+To access and use sensors/circuits connected to these GPIO pins, we need to first import the GPIO library using 
+
+
+
 #### _Touch Sensors_ ####
 
+
 #### _RGB LED Strip_ ####
+
 
 
 
