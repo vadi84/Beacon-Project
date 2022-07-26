@@ -56,7 +56,14 @@ To install MQTT on the Raspberry Pi, we take the following steps:
  1. Before installing the MQTT broker, update the Raspberry Pi OS using either of the following two commands in the Rasp Pi OS Terminal
 
 `` sudo apt upgrade `` <br>
-`` sudo apt update ``
- 2.  
+`` sudo apt update ``  <br>
+
+ 2. Once updated, we can install the MQTT software using the following commands
+
+`` sudo apt install mosquitto mosquitto-clients `` <br>
+
+ 3. To verify the installation, type
+
+`` sudo <your system name> status mosquitto `` <br>
 
 
