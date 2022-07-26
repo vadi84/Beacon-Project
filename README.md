@@ -38,6 +38,23 @@ For the Raspberry Pi 4, one could use it in any of the two ways we used it in.
 - Download VNC Viewer on Windows/Mac OS and input the Raspberry Pi IP Address, connect both devices to the same Wi-Fi and use, akin to a remote monitor control.
 For the Raspberry Pi Zero W, we install a specific file onto the OS loaded SD Card with Wi-Fi details so that the RaspPi Zero can connect to the specified Wi-Fi immediately on starting.
 <br>
+<br>
+
+#### _Running the Pi on startup_
+To run the Raspberry Pi on startup, we use the ``rc.local`` method, most likely the easiest and simplest way to get your program to run on boot. The downside is that tasks started with rc.local happen before the X windows system starts, which means you will not have access to graphical user interface (GUI) elements.
+
+You will need root-level access to modify rc.local, so do so with sudo: ``sudo nano /etc/rc.local``
+Scroll down, and just before the exit 0 line, enter the following: ``python /home/file_address/codename.py &`` 
+
+Test by saving with ctrl+x and reboot your Pi.
+
+The quickest way to stop your program is to kill its Linux process. In a terminal, enter the following command: ``sudo ps -ax | grep python``
+Then, find the process ID (PID) number to the left of the listed process, and use the kill command to terminate that process: ``sudo kill <PID>``
+
+<br>
+<br>
+
+
 ### _Raspberry Pi Zero W_
 
 The RaspPi Zero W has the following features - <br>
