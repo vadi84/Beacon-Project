@@ -23,12 +23,12 @@ The Beacon Project aims to establish a line of communication between professiona
 <br>
 <br>
 <br>
-## **Hardware** ##
 
-<br>
+## **Hardware** ##
 
 ### The Raspberry Pi
 Raspberry Pi is a series of single board computers and enables the usage of a simple computer interface with a keyboard and mouse, and with added features of Scratch and Python. We initially began to use the Raspberry Pi 4 for the project but later moved on to use the Raspberry Pi Zero W, a smaller variant, which suited the size necessities for our project.
+<br>
 <br>
 ### _Setting up the Pi_
 The Raspberry Pi requires an SD Card onto which we load the operating system Raspberry Pi OS (Previously known as Raspbian). We used a San Disk 16 GB SD Card for this purpose. The Raspberry Pi OS on the other hand can be installed from the official Raspberry Pi website. 
@@ -58,6 +58,8 @@ The RaspPi Zero W has the following features - <br>
 
 MQTT is an OASIS standard messaging protocol for the Internet of Things (IoT). It is designed as an extremely lightweight publish/subscribe messaging transport that is ideal for connecting remote devices with a small code footprint and minimal network bandwidth. 
 MQTT eliminates the standard client-server relationship and establishes a client-broker scene wherein every device in this network can either _publish_ data on a particular _topic_ or read published data by _subscribing_ to said topic, with the broker acting as a middle man. This maintains efficiency, light weightedness, and scalability in communication.
+<br>
+<br>
 <br>
 #### _Installation_ ####
 
@@ -176,15 +178,37 @@ def setupGPIO():
     GPIO.setup(GPIO_pin_number, GPIO.IN, pull_up_down=GPIO.PUD_UP) #Enables a pull up/pull down
 ```
 
-
-
-
-
+<br>
 
 #### _Touch Sensors_ ####
 
+The touch sensors that we used for the project are the TTP223B Touch Sensors. These sensors have 3 ports - 
+ - **SIG** : To be connected to a GPIO pin
+ - **VCC** : To be connected to a DC power supply
+ - **GND** : To be grounded
 
+<br>
+<br>
+<br>
+<br>
 #### _RGB LED Strip_ ####
+
+To use the RGB LED Strip (WS2812B), we first need to import the required libraries using ``import board`` and ``import neopixel``
+
+``pixels = neopixel.NeoPixel(board.D18, 18)`` initiates the LED strip to pin 18. 
+``ORDER = neopixel.GRB`` declares the order of colour encoding as GRB.
+
+``pixels[node_number] = (255,255,255)`` is the syntax to control the colour emitted by the LED strip.
+
+To flash the LED, we use
+```
+for x in range(0, 17):
+    pixels[x] = (255,255, 255)  #WHITE
+    time.sleep(1)
+for x in range(0,17):
+    pixels[x]=(0,0,0)
+```
+To turn the strip off, control the strip colour to black (0,0,0).
 
 
 
