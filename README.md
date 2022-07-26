@@ -66,4 +66,5 @@ To install MQTT on the Raspberry Pi, we take the following steps:
 
 `` sudo <your system name> status mosquitto `` <br>
 
-
+To establish the connection and create a broker with MQTT, we use python <br>
+The connection 
