@@ -53,10 +53,10 @@ MQTT is an OASIS standard messaging protocol for the Internet of Things (IoT). I
 MQTT eliminates the standard client-server relationship and establishes a client-broker scene wherein every device in this network can either _publish_ data on a particular _topic_ or read published data by _subscribing_ to said topic, with the broker acting as a middle man. This maintains efficiency, light weightedness, and scalability in communication.
 
 To install MQTT on the Raspberry Pi, we take the following steps:
- - Before installing the MQTT broker, update the Raspberry Pi OS using either of the following two commands in the Rasp Pi OS Terminal
+ 1. Before installing the MQTT broker, update the Raspberry Pi OS using either of the following two commands in the Rasp Pi OS Terminal
 
-``` sudo apt upgrade ```
-``` sudo apt update ```
- - 
+`` sudo apt upgrade ``
+`` sudo apt update ``
+ 2.  
 
 
