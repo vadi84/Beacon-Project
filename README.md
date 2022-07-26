@@ -45,3 +45,6 @@ The RaspPi Zero W has the following features -
 •	802.11n wireless LAN
 •	Bluetooth 4.0
 
+### Elements of the project ###
+
+## Establishing Inter-device communication using the MQTT protocol ##
