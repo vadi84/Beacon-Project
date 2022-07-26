@@ -47,10 +47,12 @@ The RaspPi Zero W has the following features -
 
 ## Elements of the project ##
 
-#### _Establishing Inter-device communication using the MQTT protocol_ ####
+### _Establishing Inter-device communication using the MQTT protocol_ ###
 
 MQTT is an OASIS standard messaging protocol for the Internet of Things (IoT). It is designed as an extremely lightweight publish/subscribe messaging transport that is ideal for connecting remote devices with a small code footprint and minimal network bandwidth. 
 MQTT eliminates the standard client-server relationship and establishes a client-broker scene wherein every device in this network can either _publish_ data on a particular _topic_ or read published data by _subscribing_ to said topic, with the broker acting as a middle man. This maintains efficiency, light weightedness, and scalability in communication.
+
+#### _Installation_ ####
 
 To install MQTT on the Raspberry Pi, we take the following steps:
  1. Before installing the MQTT broker, update the Raspberry Pi OS using either of the following two commands in the Rasp Pi OS Terminal
@@ -66,6 +68,8 @@ To install MQTT on the Raspberry Pi, we take the following steps:
 
 `` sudo <your system name> status mosquitto `` <br>
 
+#### _Establishing a connection_ ####
+
 To establish the connection and create a broker with MQTT, we use python <br>
 
 The following are essential towards initiating the broker setup and setting the CONNECT and CONNACK betweek the client and broker.
@@ -75,11 +79,66 @@ To use the client class, import it using ``import paho.mqtt.client as mqtt``
 
 ``client = mqtt.Client(client_name)`` is used to create an instance 
 
-Before you can publish messages or subscribe to topics you need to establish a connection to a broker. To do this use the connect method of the Python mqtt client. The method can be called with 4 parameters. The connect method declaration is shown below with the default parameters.
+Before you can publish messages or subscribe to topics you need to establish a connection to a broker. To do this, use the connect method of the Python MQTT client. This method can be called with 4 parameters. The connect method declaration is shown below with the default parameters.
 
 ``connect(host, port=1883, keepalive=60, bind_address="")`` <br>
 
 In our code, we use the HiveMQ free broker, and hence we type it as ``client.connect("broker.hivemq.com", 1883, 60)`` <br>
+
+#### _Callbacks, CONNECT, and CONNACK_ ####
+
+Callbacks are functions that are called in response to an event. Event Connection acknowledged Triggers the ``on_connect`` callback. Event Message Received Triggers the ``on_message`` callback.
+
+When the client receives a CONNACK message the callback is triggered if it exists.
+
+These callback functions are used only if they exist in the code, there are no default functions available. Callbacks are dependent on something called a client loop as without the loop the callbacks aren’t triggered. The ``loop()`` function is a built in function that will read the receive and send buffers, and process any messages it finds.
+
+``client.loop_start()`` starts the client loop and searches for callbacks
+``client.loop_stop()`` terminates the loop
+
+For our project, we required the code to subscribe to the required topics for each of the functions, hence an on_connect function that needs to subscribe to topics roughly looks like this:
+
+```
+def on_connect(client, userdata, flags, rc):
+    print("Connected with a result code :" + str(rc))  # Subscribing and returning connect code
+    client.subscribe("topic/topicname")
+```
+    
+Now, to associate this with the client object, we type
+
+``client.on_connect() = on_connect()`` <br>
+
+Our on_message function comprised of commands that controlled the RGB LED Strips on responses via the touch sensors on the device. If a particular touch sensor would be touched, that would trigger a particular message to be published on the function topic. on_message would check for this message and the state of the sensor with a few if-else statements and accordingly control the hardware
+
+The following is a rough depiction of the on_message function for our case:
+
+```
+def on_message(client, userdata, msg):
+    print(msg.payload) #msg.payload carries the published message info
+    if message = call a meeting
+         Flash LED
+    Check for YES or NO sensor response 
+    if YES
+         Flash LED
+    if NO
+         Terminate
+ ```
+
+#### _Publishing a Message on a Topic_ ####
+
+To publish information, we must first import the publish library with ``import paho.mqtt.publish as publish``
+
+Publishing information onto a topic is relatively straightforward. Create a publisher function which you can call everytime required and define the function content.
+
+It is important to note that to publish information, the client loop must be stopped using ``client.loop_stop()``. To publish a message on a topic, the following syntax is followed:
+
+``publish.single("topic/topicname", "Message_to_be_published", hostname="broker.hivemq.com")``
+
+#### _Setting up and controlling GPIO Pins_ ####
+
+#### _Touch Sensors_ ####
+
+#### _RGB LED Strip_ ####
 
 
 
