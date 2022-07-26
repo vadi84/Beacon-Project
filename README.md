@@ -68,10 +68,18 @@ To install MQTT on the Raspberry Pi, we take the following steps:
 
 To establish the connection and create a broker with MQTT, we use python <br>
 
-The following are essential towards initiating the broker setup and setting the CONNECT and CONNACK betweek the client and broker
+The following are essential towards initiating the broker setup and setting the CONNECT and CONNACK betweek the client and broker.
+The core of the client library is the client class which provides all of the functions to publish messages and subscribe to topics.
 
- 1. ``client = mqtt.Client()`` <br>
- 2. ``client.loop_start() `` <br>
- 3. ``client.on_connect = on_connect`` <br>
- 4. ``client.on_message = on_message`` <br>
- 5. ``client.connect("broker.hivemq.com", 1883, 60)`` <br>
+To use the client class, import it using ``import paho.mqtt.client as mqtt`` 
+
+``client = mqtt.Client(client_name)`` is used to create an instance 
+
+Before you can publish messages or subscribe to topics you need to establish a connection to a broker. To do this use the connect method of the Python mqtt client. The method can be called with 4 parameters. The connect method declaration is shown below with the default parameters.
+
+``connect(host, port=1883, keepalive=60, bind_address="")`` <br>
+
+In our code, we use the HiveMQ free broker, and hence we type it as ``client.connect("broker.hivemq.com", 1883, 60)`` <br>
+
+
+
