@@ -67,4 +67,11 @@ To install MQTT on the Raspberry Pi, we take the following steps:
 `` sudo <your system name> status mosquitto `` <br>
 
 To establish the connection and create a broker with MQTT, we use python <br>
-The connection 
+
+The following are essential towards initiating the broker setup and setting the CONNECT and CONNACK betweek the client and broker
+
+ 1. ``client = mqtt.Client()`` <br>
+ 2. ``client.loop_start() `` <br>
+ 3. ``client.on_connect = on_connect`` <br>
+ 4. ``client.on_message = on_message`` <br>
+ 5. ``client.connect("broker.hivemq.com", 1883, 60)`` <br>
