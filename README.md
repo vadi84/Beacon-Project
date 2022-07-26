@@ -36,7 +36,7 @@ Once installed and initiated, the SD Card simply needs to be inserted into the a
 For the Raspberry Pi 4, one could use it in any of the two ways we used it in.
 - Using an HDMI cable, link up the Pi to a monitor and connect a keyboard and mouse to use.
 - Download VNC Viewer on Windows/Mac OS and input the Raspberry Pi IP Address, connect both devices to the same Wi-Fi and use, akin to a remote monitor control.
-For the Raspberry Pi Zero W, we install a specific file onto the OS loaded SD Card with Wi-Fi details so that the RaspPi Zero can connect to the specified Wi-Fi immediately on starting.
+For the Raspberry Pi Zero W, we install a specific file onto the OS loaded SD Card with Wi-Fi details (find these files in the Python Codes folder of this repository) so that the RaspPi Zero can connect to the specified Wi-Fi immediately on starting.
 <br>
 <br>
 
