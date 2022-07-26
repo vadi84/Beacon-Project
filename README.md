@@ -46,7 +46,7 @@ To run the Raspberry Pi on startup, we use the ``rc.local`` method, most likely 
 You will need root-level access to modify rc.local, so do so with sudo: ``sudo nano /etc/rc.local``
 Scroll down, and just before the exit 0 line, enter the following: ``python /home/file_address/codename.py &`` 
 
-Test by saving with ctrl+x and reboot your Pi.
+Test by saving with ctrl+x and rebooting your Pi.
 
 The quickest way to stop your program is to kill its Linux process. In a terminal, enter the following command: ``sudo ps -ax | grep python``
 Then, find the process ID (PID) number to the left of the listed process, and use the kill command to terminate that process: ``sudo kill <PID>``
