@@ -20,12 +20,16 @@ The Beacon Project aims to establish a line of communication between professiona
 - Reset – A tap on the sensor that is used to call a function cancels the function, i.e., to cancel or end a meeting, to end recess, etc. This function can be activated only by the person that calls for a particular meeting/function.
 
 -	Lock – When a user calls for a meeting, every other beacon needs to turn inactive apart from the yes/no face so that no other beacon overrides the initial beacon’s function. Until the entire vote is completed, or the function is cancelled, all beacons stay passive.
+<br>
+<br>
+<br>
+## **Hardware** ##
 
-## **Hardware**
+<br>
 
 ### The Raspberry Pi
 Raspberry Pi is a series of single board computers and enables the usage of a simple computer interface with a keyboard and mouse, and with added features of Scratch and Python. We initially began to use the Raspberry Pi 4 for the project but later moved on to use the Raspberry Pi Zero W, a smaller variant, which suited the size necessities for our project.
-
+<br>
 ### _Setting up the Pi_
 The Raspberry Pi requires an SD Card onto which we load the operating system Raspberry Pi OS (Previously known as Raspbian). We used a San Disk 16 GB SD Card for this purpose. The Raspberry Pi OS on the other hand can be installed from the official Raspberry Pi website. 
 Once installed and initiated, the SD Card simply needs to be inserted into the appropriate slot on the Pi. 
@@ -33,7 +37,7 @@ For the Raspberry Pi 4, one could use it in any of the two ways we used it in.
 - Using an HDMI cable, link up the Pi to a monitor and connect a keyboard and mouse to use.
 - Download VNC Viewer on Windows/Mac OS and input the Raspberry Pi IP Address, connect both devices to the same Wi-Fi and use, akin to a remote monitor control.
 For the Raspberry Pi Zero W, we install a specific file onto the OS loaded SD Card with Wi-Fi details so that the RaspPi Zero can connect to the specified Wi-Fi immediately on starting.
-
+<br>
 ### _Raspberry Pi Zero W_
 
 The RaspPi Zero W has the following features - <br>
@@ -46,14 +50,15 @@ The RaspPi Zero W has the following features - <br>
 •	CSI camera connector <br>
 •	802.11n wireless LAN <br>
 •	Bluetooth 4.0 <br>
-
+<br>
+<br>
 ## Elements of the project ##
 
 ### _Establishing Inter-device communication using the MQTT protocol_ ###
 
 MQTT is an OASIS standard messaging protocol for the Internet of Things (IoT). It is designed as an extremely lightweight publish/subscribe messaging transport that is ideal for connecting remote devices with a small code footprint and minimal network bandwidth. 
 MQTT eliminates the standard client-server relationship and establishes a client-broker scene wherein every device in this network can either _publish_ data on a particular _topic_ or read published data by _subscribing_ to said topic, with the broker acting as a middle man. This maintains efficiency, light weightedness, and scalability in communication.
-
+<br>
 #### _Installation_ ####
 
 To install MQTT on the Raspberry Pi, we take the following steps:
@@ -69,7 +74,10 @@ To install MQTT on the Raspberry Pi, we take the following steps:
  3. To verify the installation, type
 
 `` sudo <your system name> status mosquitto `` <br>
-
+<br>
+<br>
+<br>
+<br>
 #### _Establishing a connection_ ####
 
 To establish the connection and create a broker with MQTT, we use python <br>
@@ -86,7 +94,10 @@ Before you can publish messages or subscribe to topics you need to establish a c
 ``connect(host, port=1883, keepalive=60, bind_address="")`` <br>
 
 In our code, we use the HiveMQ free broker, and hence we type it as ``client.connect("broker.hivemq.com", 1883, 60)`` <br>
-
+<br>
+<br>
+<br>
+<br>
 #### _Callbacks, CONNECT, and CONNACK_ ####
 
 Callbacks are functions that are called in response to an event. Event Connection acknowledged Triggers the ``on_connect`` callback. Event Message Received Triggers the ``on_message`` callback.
@@ -125,6 +136,10 @@ def on_message(client, userdata, msg):
     if NO
          Terminate
  ```
+<br>
+<br>
+<br>
+<br>
 
 #### _Publishing a Message on a Topic_ ####
 
@@ -135,12 +150,34 @@ Publishing information onto a topic is relatively straightforward. Create a publ
 It is important to note that to publish information, the client loop must be stopped using ``client.loop_stop()``. To publish a message on a topic, the following syntax is followed:
 
 ``publish.single("topic/topicname", "Message_to_be_published", hostname="broker.hivemq.com")``
-
+<br>
+<br>
+<br>
+<br>
 #### _Setting up and controlling GPIO Pins_ ####
 
 GPIO stands for General Purpose Input Output. The Raspberry Pi Zero W has two rows of 40 pins, consisting of pins for DC power, grounding, and GPIO (27 pins) and more. 
 
-To access and use sensors/circuits connected to these GPIO pins, we need to first import the GPIO library using 
+To access and use sensors/circuits connected to these GPIO pins, we need to first import the GPIO library using ``import RPi.GPIO as GPIO``  <br>
+RPi.GPIO supports referring to GPIO pins using the physical pin numbers.
+
+GPIO High and Low are the basic levels of communication between sensors connected to these pins and the board. 
+
+To set up a channel as an input or an output, call either: ``GPIO.setup(channel, GPIO.IN)`` or ``GPIO.setup(channel, GPIO.OUT)``
+
+To read the value of an input channel, call ``GPIO.input(channel)`` and to declare the value on a channel, call ``GPIO.output(channel,state)``
+
+To access and enable these pins it is also necessary to set these pins up using the ``setupGPIO()`` function. This function will consist of the following syntax
+
+```
+def setupGPIO():
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
+    GPIO.setup(GPIO_pin_number, GPIO.IN, pull_up_down=GPIO.PUD_UP) #Enables a pull up/pull down
+```
+
+
+
 
 
 
